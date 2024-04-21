@@ -35,6 +35,15 @@ struct ContentView: View {
         let letter = letters.randomElement()
         let trimmed = letter?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    
+    func testUITextChecker() {
+        let word = "Swift"
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count)
+        
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        let allGood = misspelledRange.location == NSNotFound
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
