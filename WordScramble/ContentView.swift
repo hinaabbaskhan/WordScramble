@@ -8,41 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Finn", "Leia", "Luke", "Rey"]
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
+    
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord).textInputAutocapitalization(.never)
+                }
 
-        var body: some View {
-            List(people, id: \.self) {
-                Text($0)
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        Text(word)
+                    }
+                }
             }
         }
-    
-    func testBundle() {
-        if let fileURL = Bundle.main.url(forResource: "somefile", withExtension: "txt"){
-            if let fileContents = try? String(contentsOf: fileURL){
-                print(fileContents)
-            }
+        .navigationTitle(rootWord)
+        onSubmit {
+            addNewWord()
         }
     }
     
-    
-    func testString() {
-        let input = """
-                    a
-                    b
-                    c
-                    """
-        let letters = input.components(separatedBy: " ")
-        let letter = letters.randomElement()
-        let trimmed = letter?.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    func testUITextChecker() {
-        let word = "Swift"
-        let checker = UITextChecker()
-        let range = NSRange(location: 0, length: word.utf16.count)
-        
-        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-        let allGood = misspelledRange.location == NSNotFound
+    func addNewWord() {
+        // lowercase and trim the word, to make sure we don't add duplicate words with case differences
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // exit if the remaining string is empty
+        guard answer.count > 0 else { return }
+
+        // extra validation to come
+
+        usedWords.insert(answer, at: 0)
+        newWord = ""
     }
 }
 
