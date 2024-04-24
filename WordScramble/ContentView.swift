@@ -14,25 +14,28 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    TextField("Enter your word", text: $newWord).textInputAutocapitalization(.never)
-                }
+            NavigationStack {
+                List {
+                    Section {
+                        TextField("Enter your word", text: $newWord)
+                            .textInputAutocapitalization(.never)
+                    }
 
-                Section {
-                    ForEach(usedWords, id: \.self) { word in
-                        HStack {
-                               Image(systemName: "\(word.count).circle")
-                               Text(word)
-                           }                    }
+                    Section {
+                        ForEach(usedWords, id: \.self) { word in
+                            HStack {
+                                Image(systemName: "\(word.count).circle")
+                                Text(word)
+                            }
+                        }
+                    }
+                }
+                .navigationTitle(rootWord)
+                .onSubmit(addNewWord)
                 }
             }
         }
-        .navigationTitle(rootWord)
-        .onSubmit (addNewWord)
-        .onAppear(perform: startGame)
-    }
+
     
     func addNewWord() {
         // lowercase and trim the word, to make sure we don't add duplicate words with case differences
