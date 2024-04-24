@@ -11,6 +11,9 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @State private var errorTitle = ""
+    @State private var errorMessage = ""
+    @State private var showingError = false
     
     
     var body: some View {
@@ -33,6 +36,8 @@ struct ContentView: View {
                 .navigationTitle(rootWord)
                 .onSubmit(addNewWord)
                 .onAppear(perform: startGame)
+                .alert(errorTitle, isPresented: $showingError) { } message: {
+                    Text(errorMessage)
                 }
             }
         }
