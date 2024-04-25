@@ -34,6 +34,13 @@ struct ContentView: View {
                     }
                 }
                 .navigationTitle(rootWord)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Restart") {
+                            startGame()
+                        }
+                    }
+                }
                 .onSubmit(addNewWord)
                 .onAppear(perform: startGame)
                 .alert(errorTitle, isPresented: $showingError) { } message: {
