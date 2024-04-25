@@ -14,10 +14,12 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
-    
+    @State private var score = 0 // Track player's score
     
     var body: some View {
-            NavigationStack {
+        NavigationView {
+            VStack {
+                Text("Score: \(score)")
                 List {
                     Section {
                         TextField("Enter your word", text: $newWord)
@@ -33,6 +35,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .listStyle(GroupedListStyle())
                 .navigationTitle(rootWord)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -48,7 +51,7 @@ struct ContentView: View {
                 }
             }
         }
-
+    }
     
     func addNewWord() {
         // lowercase and trim the word, to make sure we don't add duplicate words with case differences
