@@ -75,6 +75,8 @@ struct ContentView: View {
             return
         }
 
+        // Calculate score based on word length
+        score += answer.count
         withAnimation {
             usedWords.insert(answer, at: 0)
         }
