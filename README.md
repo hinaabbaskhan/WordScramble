@@ -6,8 +6,11 @@ We will learn List, onAppear(), Bundle, fatalError(), and more – all useful sk
 
 ### Features
 Random Word Generation: Each time you play, you'll encounter a new eight-letter word to challenge yourself with.
+
 Word Validation: The game checks the validity of the words you create to ensure they are English words.
+
 Score Tracking: Keep track of your progress and challenge yourself to improve your word count.
+
 Educational: Work Scramble is not just a game; it's a learning experience. Sharpen your vocabulary and expand your word knowledge while having fun.
 
 ### Technologies Used
