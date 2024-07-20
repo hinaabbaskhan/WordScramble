@@ -13,6 +13,10 @@ Score Tracking: Keep track of your progress and challenge yourself to improve yo
 
 Educational: Work Scramble is not just a game; it's a learning experience. Sharpen your vocabulary and expand your word knowledge while having fun.
 
+### Demo
+https://github.com/user-attachments/assets/46fb52d7-9ae7-4dd8-8cbd-c6711fb20de8
+
+
 ### Technologies Used
 Swift,
 UIKit,
